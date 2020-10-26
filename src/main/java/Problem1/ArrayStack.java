@@ -1,7 +1,6 @@
 package Problem1;
 
 public class ArrayStack<T> implements Stack<T> {
-    // do not change member variables
     private T[] data;
     private int size;
 
@@ -9,27 +8,40 @@ public class ArrayStack<T> implements Stack<T> {
     }
 
     public ArrayStack(int capacity) {
-        // homework
+        if (capacity > 0) {
+            data = (T[]) new Object[capacity];
+        }
+        size = 0;
     }
 
     @Override
     public boolean push(T val) {
-        // homework
-        return false;   // place holder
+        if (size >= data.length) {
+            return false;
+        }
+        data[size] = val;
+        size++;
+        return true;
     }
 
     @Override
     public T pop() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        if (size <= 0) {
+            return null;
+        }
+        T val = data[size - 1];
+        data[size - 1] = null;
+        size--;
+        return val;
     }
 
     @Override
     public T peek() {
-        // homework
-        T val = null;   // place holder
-        return val;   // place holder
+        if (data.length <= 0) {
+            return null;
+        }
+        T val = data[size - 1];
+        return val;
     }
 
     @Override
